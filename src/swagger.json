@@ -1,0 +1,454 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "CRUD Vagas de Emprego",
+        "description": "O objetivo foi criar uma API onde fosse possível gerenciar vagas e candidatas.",
+        "termsOfService": "http://localhost:7070/terms/",
+        "contact": {
+            "email": "lizzbeth.lizz.diaz@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:7070/",
+            "description": " Vagas de Emprego"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Vagas",
+            "description": "Manipulação das Rotas das Vagas"
+        },
+        {
+            "name": "Candidatas",
+            "description": "Manipulação das Rotas das Candidatas"
+        }
+    ],
+    "paths": {
+        "/vagas/create": {
+            "post": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Criar/cadastrar vagas",
+                "description": "Cadastro das vagas",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Vagas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "404": {
+                        "description": "ERROR",
+                        "content": {}
+                    },
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "objetc",
+                                    "$ref": "#/components/schemas/Vagas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vagas/all": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Retroena todos as vagas disponíveis",
+                "description": "Retorna todos as vagas cadastradas",
+                "parameters": [
+                    {
+                        "name": "Vagas",
+                        "description": "Retorna todos as vagas cadastradas",
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Vagas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Vagas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vagas/{Id}": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Busca por ID",
+                "description": "Retorna uma vaga específica por ID",
+                "parameters": [
+                    {
+                        "name": "Vaga Id",
+                        "in": "path",
+                        "description": "Id da vaga para retorno",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Vagas"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Atualiza qualquer parte (separadamente) de uma vaga cadastrada",
+                "requestBody": {
+                    "description": "Atualiza parte da vaga",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "atributo que será atualizado": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "404": {
+                        "description": "Error",
+                        "content": {}
+                    },
+                    "200": {
+                        "description": "OK. Atualizado realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Vagas"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            },
+            "delete": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Deletar uma vaga",
+                "description": "Deleta uma vaga específico por ID",
+                "parameters": [
+                    {
+                        "name": "Vaga Id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Id da vaga para deletar"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Vaga deletado",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Vaga não encontado(id inválido)",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/candidatas/create": {
+            "post": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Cadastra uma candidata ",
+                "description": "Cadastra as candidatas ",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Candidatas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "404": {
+                        "description": "ERROR",
+                        "content": {}
+                    },
+                    "200": {
+                        "description": "Candidata cadastrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "objetc",
+                                    "$ref": "#/components/schemas/Candidatas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/candidatas/all": {
+            "get": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Retorna todos as candidatas",
+                "description": "Retorna todas as candidatas cadastradas",
+                "parameters": [
+                    {
+                        "name": "Candidata",
+                        "description": "Retorna todas as candidatas cadastradas",
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/Candidatas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Candidatas"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+        },
+        "/candidatas/{id}": {
+            "get": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Busca por ID",
+                "description": "Retorna uma candidata específico por ID",
+                "parameters": [
+                    {
+                        "name": "Candidata Id",
+                        "in": "path",
+                        "description": "Id da candidata para retorno",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Candidatas"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Atualizaçao dos dados de uma candidata cadastrada",
+                "requestBody": {
+                    "description": "Atualiza a entidade candidata",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Candidatas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "404": {
+                        "description": "Error",
+                        "content": {}
+                    },
+                    "200": {
+                        "description": "OK. Candidata atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Candidatas"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            },
+            "patch": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Atualiza qualquer parte (separadamente) de uma candidata cadastrada",
+                "requestBody": {
+                    "description": "Atualiza parte da entidade candidata",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "atributo que será atualizado": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "404": {
+                        "description": "Error",
+                        "content": {}
+                    },
+                    "200": {
+                        "description": "OK. Atualizado realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Candidatas"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            },
+            "delete": {
+                "tags": [
+                    "Candidatas"
+                ],
+                "summary": "Deleta uma candidata por  ID",
+                "description": "Deleta uma candidata ",
+                "parameters": [
+                    {
+                        "name": "Candidata Id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Id da candidata para deletar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Candidata deletada",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "ERROR (Id não encontado)",
+                        "content": {}
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Vagas": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nomeVaga": {
+                        "type": "string"
+                    },
+                    "salario": {
+                        "type": "string"
+                    },
+                    "link": {
+                        "type": "string"
+                    },
+                    "empresa": {
+                        "type": "string"
+                    },"descrocao": {
+                        "type": "string"
+                    },
+                    "criadoEm": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Candidatas": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "areaInteresse": {
+                        "type": "string"
+                    },
+                    "github": {
+                        "type": "string"
+                    },
+                    "linkedin": {
+                        "type": "string"
+                    },
+                    "criadoEm": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
