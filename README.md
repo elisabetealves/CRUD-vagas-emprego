@@ -1,5 +1,5 @@
 
-# 🚀 CRUD - Vagas de emprego
+# 🚀 CRUD - Vagas de emprego 
 
 ![image](https://media.giphy.com/media/hT9p4U8o4PsgXt1wNU/giphy.gif)
 
@@ -87,6 +87,7 @@ Siga os passos e inclua as informações abaixo:
    |         |- 📑 vagasRoutes.js 
    |
    |    |- 📑 app.js
+   |    |- 📑 swagger.json
    |
    |
    |- 📑 .env
