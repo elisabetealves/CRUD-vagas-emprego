@@ -41,7 +41,7 @@ Siga os passos e inclua as informações abaixo:
 | ou Faça o clone  | `git clone` |
 | Instale as dependências   | `npm i` |
 | Crie seu .env e inclua as variáveis e os valores     | `MONGODB_URI` |
-| utilize o script de dev    | `npm start` |
+| utilize o script de start    | `npm start` |
 
 <br>
 
